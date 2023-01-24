@@ -1,0 +1,16 @@
+{
+  "modal": {
+    "closeConfirmation": {
+      "message": "Deseja fechar?"
+    }
+  },
+  "stepper": {
+    "tabs": {
+      "label": "Nuvy stepper"
+    },
+    "cancelConfirmation": {
+      "title": "Cancelar",
+      "message": "Deseja cancelar?"
+    }
+  }
+}

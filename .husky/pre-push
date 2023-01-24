@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+yarn build ||
+(
+  echo '❌👷 Build falhou: Verifique os erros abaixo para mais detalhes.'
+  false;
+)
