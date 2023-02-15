@@ -24,9 +24,11 @@ export interface DatagridToolbarAction {
   icon?: ReactNode
 }
 
-export type DatagridRowId = Id
+export type DatagridRowId = number | string
 
-export type DatagridRow = Identifiable & Record<string, unknown>
+export type DatagridRow = {
+  id: DatagridRowId
+} & Record<string, unknown>
 
 export interface DatagridRowAction {
   type: 'iconButton' | 'containedButton'
@@ -35,9 +37,9 @@ export interface DatagridRowAction {
   icon?: ReactNode
   align?: 'left' | 'right' | 'center'
   component?: ReactElement
-  onClick: (id: Id) => void
-  onEditClick?: (id: Id) => void
-  onDeleteClick?: (id: Id) => void
+  onClick: (id: DatagridRowId) => void
+  onEditClick?: (id: DatagridRowId) => void
+  onDeleteClick?: (id: DatagridRowId) => void
 }
 
 export interface DatagridColumn {

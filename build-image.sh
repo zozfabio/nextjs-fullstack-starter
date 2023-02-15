@@ -2,21 +2,21 @@
 export DOCKER_BUILDKIT=1 && \
 docker build\
  --build-arg BUILDKIT_INLINE_CACHE=1\
- --cache-from backoffice-front:deps\
+ --cache-from myapp-front:deps\
  --target deps\
- --tag backoffice-front:deps\
+ --tag myapp-front:deps\
  . && \
 docker build\
  --build-arg BUILDKIT_INLINE_CACHE=1\
- --cache-from backoffice-front:deps\
- --cache-from backoffice-front:builder\
+ --cache-from myapp-front:deps\
+ --cache-from myapp-front:builder\
  --target builder\
- --tag backoffice-front:builder\
+ --tag myapp-front:builder\
  . && \
 docker build\
  --build-arg BUILDKIT_INLINE_CACHE=1\
- --cache-from backoffice-front:deps\
- --cache-from backoffice-front:builder\
- --cache-from backoffice-front:latest\
- --tag backoffice-front:latest\
+ --cache-from myapp-front:deps\
+ --cache-from myapp-front:builder\
+ --cache-from myapp-front:latest\
+ --tag myapp-front:latest\
  .

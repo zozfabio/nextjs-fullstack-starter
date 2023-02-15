@@ -14,7 +14,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
-import { useController, useFormContext } from '..'
+import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label

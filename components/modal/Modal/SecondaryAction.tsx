@@ -1,13 +1,10 @@
-import Button from '@mui/material/Button'
-
-import { useTranslate } from 'locale'
+import { Button } from '@mui/material'
 
 import { SecondaryActionProps } from './types'
 import { shouldMountSecondaryAction } from './helpers'
 
 const SecondaryAction = (props: SecondaryActionProps) => {
   const { secondaryActionLabel, secondaryActionOnClick, onClose } = props
-  const t = useTranslate('common')
   if (!shouldMountSecondaryAction(props)) {
     return null
   }
@@ -30,7 +27,7 @@ const SecondaryAction = (props: SecondaryActionProps) => {
         }
       }}
     >
-      {secondaryActionLabel || t('close')}
+      {secondaryActionLabel || 'Fechar'}
     </Button>
   )
 }

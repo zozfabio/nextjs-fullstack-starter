@@ -17,12 +17,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import {
   isDate,
   isDateString,
-  dateParse,
+  parseDate,
   startOfDay,
   ptBrLocale
 } from 'helpers/time'
 
-import { useController, useFormContext } from '..'
+import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label
@@ -62,7 +62,7 @@ const InputDate: FunctionComponent<InputDateProps> = ({
 
   const date = useMemo(() => {
     if (isDateString(value)) {
-      return dateParse(value)
+      return parseDate(value)
     } else if (isDate(value)) {
       return value
     }
@@ -74,7 +74,7 @@ const InputDate: FunctionComponent<InputDateProps> = ({
       if (!keyboardInputValue && isDate(date)) {
         onChange(startOfDay(date))
       } else if (keyboardInputValue && isDateString(keyboardInputValue)) {
-        onChange(dateParse(keyboardInputValue))
+        onChange(parseDate(keyboardInputValue))
       } else {
         onChange(null)
       }

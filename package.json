@@ -1,5 +1,5 @@
 {
-  "name": "backoffice",
+  "name": "myapp",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,11 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write .",
-    "check-types": "tsc --pretty --noEmit",
-    "check-format": "prettier --check .",
-    "check-lint": "eslint . --ext ts --ext tsx --ext js",
-    "check-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
     "postinstall": "husky install"
   },
   "dependencies": {
@@ -24,15 +19,11 @@
     "@mui/x-data-grid": "latest",
     "@mui/x-date-pickers": "latest",
     "date-fns": "latest",
-    "i18next": "latest",
-    "i18next-fs-backend": "latest",
     "next": "latest",
     "next-auth": "latest",
-    "next-i18next": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "latest",
-    "react-i18next": "latest",
     "react-imask": "latest",
     "react-query": "latest",
     "react-toastify": "latest",
@@ -41,7 +32,6 @@
     "zod": "latest"
   },
   "devDependencies": {
-    "@svgr/webpack": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -56,7 +46,7 @@
     "typescript": "latest"
   },
   "lint-staged": {
-    "./**/*.{js,ts,tsx}": [
+    "./**/*.{ts,tsx}": [
       "prettier --write"
     ]
   }

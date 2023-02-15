@@ -1,11 +1,10 @@
 import React from 'react'
-
-import Dialog from '@mui/material/Dialog'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContentText from '@mui/material/DialogContentText'
-
-import { useTranslate } from 'locale'
+import {
+  Dialog,
+  DialogContent,
+  DialogActions,
+  DialogContentText
+} from '@mui/material'
 
 import ModalTitle from './ModalTitle'
 import PrimaryAction from './PrimaryAction'
@@ -22,7 +21,6 @@ const CloseConfirmation = ({
   onConfirm,
   onClose
 }: CloseConfirmationProps) => {
-  const t = useTranslate(['common', 'components'])
   if (!confirmOnClose) {
     return <></>
   }
@@ -43,18 +41,14 @@ const CloseConfirmation = ({
       <ModalTitle id={myId} title={title} disableCloseButton />
       <DialogContent sx={{ p: 3 }}>
         <DialogContentText id={`${myId}-description`}>
-          {closeConfirmationMessage ||
-            t('modal.closeConfirmation.message', { ns: 'components' })}
+          {closeConfirmationMessage || 'Deseja fechar?'}
         </DialogContentText>
       </DialogContent>
       <DialogActions sx={{ pb: 2, pt: 0, px: 3 }}>
-        <SecondaryAction
-          onClose={onClose}
-          secondaryActionLabel={t('no', { ns: 'common' }) || 'No'}
-        />
+        <SecondaryAction onClose={onClose} secondaryActionLabel={'Não'} />
         <PrimaryAction
           primaryActionOnClick={onConfirm}
-          primaryActionLabel={t('yes', { ns: 'common' }) || 'Yes'}
+          primaryActionLabel={'Sim'}
         />
       </DialogActions>
     </Dialog>

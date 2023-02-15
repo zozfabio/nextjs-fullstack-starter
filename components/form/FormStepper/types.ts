@@ -1,8 +1,8 @@
+import { z } from 'zod'
 import { ReactNode } from 'react'
-
-import { FieldValues } from '..'
-
 import { TabsProps, TabProps } from '@mui/material'
+
+import { FieldValues } from 'components/form'
 
 export interface StepperTabProps extends Omit<TabProps, 'label'> {
   index: number
@@ -25,7 +25,7 @@ export interface FormStepperProps
   extends Pick<TabsProps, 'ref' | 'disabled' | 'sx'> {
   steps: FormStepperStep[]
   defaultValues?: FieldValues
-  validationSchema: any // TODO: tipar o atributo vSchema do form
+  validationSchema: z.ZodSchema
   onInvalid?: (errors: FieldValues) => void
   onSubmit: (
     values: FieldValues

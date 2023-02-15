@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid'
 import Tooltip from '@mui/material/Tooltip'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 
-import { useController, useFormContext } from '..'
+import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label

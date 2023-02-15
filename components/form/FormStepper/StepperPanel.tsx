@@ -4,7 +4,6 @@ import Box from '@mui/material/Box'
 
 import { StepperPanelProps } from './types'
 
-// TODO: hide not unmont
 const StepperPanel: FunctionComponent<PropsWithChildren<StepperPanelProps>> = ({
   index,
   active,
@@ -19,7 +18,7 @@ const StepperPanel: FunctionComponent<PropsWithChildren<StepperPanelProps>> = ({
       sx={{ flexGrow: 1 }}
       bgcolor="background.paper"
     >
-      {index === active && children}
+      {children}
     </Box>
   )
 }

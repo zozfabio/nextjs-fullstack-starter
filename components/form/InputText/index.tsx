@@ -2,7 +2,6 @@ import React, {
   ChangeEvent,
   FunctionComponent,
   useCallback,
-  useEffect,
   useMemo
 } from 'react'
 
@@ -14,7 +13,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
-import { useController, useFormContext } from '..'
+import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label
@@ -25,15 +24,12 @@ import { InputTextProps } from './types'
 
 const InputText: FunctionComponent<InputTextProps> = ({
   name,
-  defaultValue,
   label,
   placeholder,
   required,
   disabled,
   readOnly,
   maxLength,
-  allowNumber = true,
-  onVerifyExternalValidation,
   tooltipInfo,
   xs,
   sm,
@@ -59,39 +55,10 @@ const InputText: FunctionComponent<InputTextProps> = ({
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      if (allowNumber) {
-        onChange(event)
-      } else {
-        onChange(event.target.value.replace(/[0-9]/g, ''))
-      }
+      onChange(event)
     },
-    [allowNumber, onChange]
+    [onChange]
   )
-
-  // TODO - don't register this input if verifier is not provided
-  // É usado para validações customizadas
-  const inputValidName = `${name}_isvalid`
-  const {
-    field: { value: valueValid, onChange: onChangeValid, ...fieldValid }
-  } = useController({
-    name: inputValidName,
-    control
-  })
-
-  useInputGroupRegister(inputValidName)
-
-  const textValid = useMemo(
-    () => (valueValid === undefined ? '' : valueValid),
-    [valueValid]
-  )
-
-  useEffect(() => {
-    if (text && defaultValue !== text && onVerifyExternalValidation) {
-      onVerifyExternalValidation(text).then((isValid) => {
-        onChangeValid(isValid)
-      })
-    }
-  }, [defaultValue, onChangeValid, onVerifyExternalValidation, text])
 
   const input = (
     <FormControl
@@ -129,14 +96,6 @@ const InputText: FunctionComponent<InputTextProps> = ({
         inputProps={{ maxLength: maxLength ? maxLength : undefined }}
         size="small"
       />
-      {onVerifyExternalValidation && (
-        <input
-          {...fieldValid}
-          value={textValid}
-          onChange={onChangeValid}
-          style={{ display: 'none' }}
-        />
-      )}
       {error && <FormHelperText id={helpId}>{error.message}</FormHelperText>}
     </FormControl>
   )

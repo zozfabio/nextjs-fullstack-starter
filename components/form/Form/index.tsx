@@ -10,7 +10,7 @@ import {
 
 import Grid from '@mui/material/Grid'
 
-import { vResolver, useForm, FormProvider, FieldValues } from '..'
+import { vResolver, useForm, FormProvider, FieldValues } from 'components/form'
 
 import { FormProps } from './types'
 

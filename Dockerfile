@@ -26,5 +26,4 @@ COPY --from=builder --chown=nextjs:nodejs /app/next.config.js ./
 COPY --from=builder --chown=nextjs:nodejs /app/next-18next.config.js ./
 USER nextjs
 EXPOSE 3000
-# TODO: pegar Dockerfile CMD de outro projeto
-CMD ["yarn", "start"]
+CMD ["/bin/sh", "-c", "yarn prisma migrate deploy;yarn start"]

@@ -1,6 +1,9 @@
 import { InputProps } from '../types'
 
-export type InputSelectItem = Selectable
+export type InputSelectItem = {
+  id: number | string
+  toString: () => string
+}
 
 export type InputSelectItemId = InputSelectItem['id']
 export type InputSelectItemLabel = ReturnType<InputSelectItem['toString']>

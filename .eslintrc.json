@@ -5,27 +5,15 @@
     "no-restricted-imports": [
       "error",
       {
-        "paths": [
-          "date-fns",
-          "react-hook-form",
-          "i18next",
-          "react-i18next",
-          "@hookform/resolvers",
-          "next-auth"
-        ],
+        "paths": ["date-fns", "react-hook-form", "@hookform/resolvers"],
         "patterns": [
           "@hookform/resolvers/*",
-          "next-auth/*",
           "components/auth/*",
           "components/data/*",
           "components/form/*",
           "components/layout/*",
           "components/modal/*",
           "components/navigation/*",
-          "i18n/*",
-          "backend/mock/*",
-          "backend/json/*",
-          "backend/helpers",
           "backend/middlewares",
           "backend/types"
         ]

@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-imports */
 import { v4 as uuid } from 'uuid'
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -8,7 +7,7 @@ export const authOptions: NextAuthOptions = {
     signIn: '/login'
   },
   session: {
-    maxAge: 30 * 60 // 30 min
+    maxAge: 15 * 60 // 15 min
   },
   providers: [
     CredentialsProvider({
@@ -17,7 +16,7 @@ export const authOptions: NextAuthOptions = {
         username: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' }
       },
-      async authorize(credentials, req) {
+      async authorize(credentials, _req) {
         if (
           credentials?.username === 'user@temp.com' &&
           credentials?.password === 'userpass'

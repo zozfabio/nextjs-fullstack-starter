@@ -1,8 +1,4 @@
-import React, { memo } from 'react'
-
-import Button from '@mui/material/Button'
-
-import { useTranslate } from 'locale'
+import { Button } from '@mui/material'
 
 import { PrimaryActionProps } from './types'
 import { shouldMountPrimaryAction } from './helpers'
@@ -10,7 +6,6 @@ import { shouldMountPrimaryAction } from './helpers'
 const PrimaryAction = (props: PrimaryActionProps) => {
   const { primaryActionLabel, primaryActionOnClick, primaryActionDisabled } =
     props
-  const t = useTranslate('common')
   if (!shouldMountPrimaryAction(props)) {
     return null
   }
@@ -27,9 +22,9 @@ const PrimaryAction = (props: PrimaryActionProps) => {
       onClick={primaryActionOnClick}
       disabled={primaryActionDisabled}
     >
-      {primaryActionLabel || t('confirm')}
+      {primaryActionLabel || 'Confirmar'}
     </Button>
   )
 }
 
-export default memo(PrimaryAction)
+export default PrimaryAction

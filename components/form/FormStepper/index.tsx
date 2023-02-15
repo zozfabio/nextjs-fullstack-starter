@@ -7,19 +7,11 @@ import {
   useMemo,
   FunctionComponent
 } from 'react'
-import { useTranslate } from 'locale'
-
-import { vResolver, useForm, FormProvider, FieldValues } from '..'
-
 import { useRouter } from 'next/router'
+import { Stack, Button, Toolbar } from '@mui/material'
+import { ChevronLeft, ChevronRight } from '@mui/icons-material'
 
-import Stack from '@mui/material/Stack'
-import Button from '@mui/material/Button'
-import Toolbar from '@mui/material/Toolbar'
-
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-
+import { vResolver, useForm, FormProvider, FieldValues } from 'components/form'
 import {
   useRoutesContext,
   useNavigationConfirmationContext
@@ -31,8 +23,6 @@ import StepperPanel from './StepperPanel'
 import StepperTab from './StepperTab'
 import { StyledTabs } from './styles'
 import { FormStepperProps } from './types'
-
-// TODO - use Form
 
 const FormStepper: FunctionComponent<FormStepperProps> = ({
   steps,
@@ -54,7 +44,6 @@ const FormStepper: FunctionComponent<FormStepperProps> = ({
 }) => {
   const router = useRouter()
   const routes = useRoutesContext()
-  const t = useTranslate(['common', 'components'])
   const fields = useRef<Map<number, string[]>>(new Map())
   const stepToForceFocus = useRef<number>()
   const [stepsState, setStepsState] = useState<Map<number, boolean>>(
@@ -222,18 +211,14 @@ const FormStepper: FunctionComponent<FormStepperProps> = ({
   useEffect(() => {
     if (isAnyFieldDirty) {
       setConfirmation({
-        title:
-          cancelTitle ||
-          t('stepper.cancelConfirmation.title', { ns: 'components' }),
-        message:
-          cancelMessage ||
-          t('stepper.cancelConfirmation.message', { ns: 'components' })
+        title: cancelTitle || 'Cancelar',
+        message: cancelMessage || 'Deseja cancelar?'
       })
     }
     return () => {
       setConfirmation()
     }
-  }, [cancelMessage, cancelTitle, isAnyFieldDirty, setConfirmation, t])
+  }, [cancelMessage, cancelTitle, isAnyFieldDirty, setConfirmation])
   const memoizedDefaultValues = useMemo(
     () => (defaultValues ? defaultValues : {}),
     [defaultValues]
@@ -284,7 +269,7 @@ const FormStepper: FunctionComponent<FormStepperProps> = ({
             <StyledTabs
               value={active}
               onChange={onChangeStep}
-              aria-label={t('stepper.tabs.label', { ns: 'components' })}
+              aria-label={'Stepper'}
             >
               {steps.map((step, i) => {
                 return (
@@ -334,7 +319,7 @@ const FormStepper: FunctionComponent<FormStepperProps> = ({
                     variant="outlined"
                     color="primary"
                   >
-                    {t('cancel', { ns: 'common' })}
+                    Cancelar
                   </Button>
                 ) : (
                   <>&nbsp;</>
@@ -356,7 +341,7 @@ const FormStepper: FunctionComponent<FormStepperProps> = ({
                     color="secondary"
                     disabled={active === 0}
                   >
-                    <ChevronLeftIcon />
+                    <ChevronLeft />
                   </Button>
                   <Button
                     onClick={nextStep}
@@ -364,7 +349,7 @@ const FormStepper: FunctionComponent<FormStepperProps> = ({
                     color="secondary"
                     disabled={active === steps.length - 1}
                   >
-                    <ChevronRightIcon />
+                    <ChevronRight />
                   </Button>
                 </Stack>
               )}
@@ -378,7 +363,7 @@ const FormStepper: FunctionComponent<FormStepperProps> = ({
                     type="submit"
                     disabled={!isAllStepsVisited() || !isAnyFieldDirty}
                   >
-                    {labelPrimaryButton || t('confirm', { ns: 'common' })}
+                    {labelPrimaryButton || 'Confirmar'}
                   </Button>
                 ) : (
                   <>&nbsp;</>

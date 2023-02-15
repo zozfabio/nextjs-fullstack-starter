@@ -18,16 +18,11 @@ import { AuthPage } from 'components/auth'
 
 import theme from 'styles/theme'
 
-// eslint-disable-next-line no-restricted-imports
-import { appWithTranslation } from 'next-i18next'
-// eslint-disable-next-line no-restricted-imports
 import { SessionProvider } from 'next-auth/react'
 
 import routes from 'routes'
 
 import 'styles/globals.css'
-
-// TODO - setup query
 
 type CustomAppProps = AppProps & {
   Component: AppProps['Component'] & {
@@ -44,7 +39,7 @@ const App: FunctionComponent<CustomAppProps> = ({
   return (
     <>
       <Head>
-        <title>Backoffice Nuvy App</title>
+        <title>My App</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta
           name="viewport"
@@ -52,21 +47,24 @@ const App: FunctionComponent<CustomAppProps> = ({
         />
       </Head>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <RoutesProvider routes={routes}>
-          <SessionProvider session={session}>
-            <RouteConfirmationProvider>
-              <CssBaseline />
-              <Box display="flex" flexDirection="column" height="100vh">
-                {Component.auth?.isPublic ? (
-                  <Component {...pageProps} />
-                ) : (
+          <RouteConfirmationProvider>
+            <Box display="flex" flexDirection="column" height="100vh">
+              {Component.auth?.isPublic ? (
+                <Component {...pageProps} />
+              ) : (
+                <SessionProvider
+                  session={session}
+                  refetchInterval={10 * 60 /* 10min */}
+                >
                   <AuthPage>
                     <Component {...pageProps} />
                   </AuthPage>
-                )}
-              </Box>
-            </RouteConfirmationProvider>
-          </SessionProvider>
+                </SessionProvider>
+              )}
+            </Box>
+          </RouteConfirmationProvider>
         </RoutesProvider>
       </ThemeProvider>
       <ToastContainer
@@ -85,4 +83,4 @@ const App: FunctionComponent<CustomAppProps> = ({
   )
 }
 
-export default appWithTranslation(App)
+export default App

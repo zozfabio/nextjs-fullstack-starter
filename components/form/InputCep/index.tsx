@@ -6,7 +6,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 
 import CepMask from './CepMask'
 
-import { useController, useFormContext } from '..'
+import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label

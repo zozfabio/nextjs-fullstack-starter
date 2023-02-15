@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-imports */
-
 import type { GetServerSideProps } from 'next'
 
 import { getCsrfToken } from 'next-auth/react'
@@ -13,15 +11,12 @@ import { useTheme } from '@mui/material'
 
 import { InputUsername, InputPassword } from 'components/form'
 
-import { useTranslate } from 'locale'
-
 type ILoginPage = CustomNextPage<{
   csrfToken?: string
 }>
 
 const LoginPage: ILoginPage = ({ csrfToken }) => {
   const { palette } = useTheme()
-  const t = useTranslate('login')
   return (
     <Grid container direction="row" justifyContent="center">
       <Box>
@@ -33,22 +28,22 @@ const LoginPage: ILoginPage = ({ csrfToken }) => {
           fontWeight="bold"
           color={palette.grey[700]}
         >
-          {t('title')}
+          Entrar
         </Typography>
         <form method="post" action="/api/auth/callback/credentials">
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <Grid container spacing={4}>
             <InputUsername
               name="username"
-              label={t('field.username.label')}
-              placeholder={t('field.username.placeholder')}
+              label={'Email'}
+              placeholder={'exemplo@email.com'}
               autoFocus
               xs={12}
             />
             <InputPassword
               name="password"
-              label={t('field.password.label')}
-              placeholder={t('field.password.placeholder')}
+              label={'Senha'}
+              placeholder={'Digite sua senha'}
               xs={12}
             />
             <Grid item container xs={12}>
@@ -59,7 +54,7 @@ const LoginPage: ILoginPage = ({ csrfToken }) => {
                 variant="body2"
                 onClick={() => {}}
               >
-                {t('link.forgottenPassword')}
+                Esqueci minha senha
               </Link>
             </Grid>
             <Grid
@@ -70,7 +65,7 @@ const LoginPage: ILoginPage = ({ csrfToken }) => {
               justifyContent="flex-end"
             >
               <Button variant="contained" color="primary" type="submit">
-                {t('button.confirm')}
+                Entrar
               </Button>
             </Grid>
           </Grid>

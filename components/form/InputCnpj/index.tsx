@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import FormHelperText from '@mui/material/FormHelperText'
 import OutlinedInput from '@mui/material/OutlinedInput'
 
-import { useController, useFormContext } from '..'
+import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label

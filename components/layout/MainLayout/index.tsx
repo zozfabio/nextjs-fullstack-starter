@@ -6,7 +6,6 @@ import {
   useState
 } from 'react'
 
-// eslint-disable-next-line no-restricted-imports
 import { useSession, signOut } from 'next-auth/react'
 
 import Typography from '@mui/material/Typography'
@@ -21,7 +20,7 @@ import MenuItem from '@mui/material/MenuItem'
 
 import logo from 'assets/logos/logo.png'
 
-import { Container } from '..'
+import { Container } from 'components/layout'
 
 import { MainSection } from './styles'
 import Image from 'next/image'
