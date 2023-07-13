@@ -1,12 +1,14 @@
 import React, { FunctionComponent, useMemo } from 'react'
 
+// eslint-disable-next-line no-restricted-imports
+import { useController, useFormContext } from 'react-hook-form'
+
 import Grid from '@mui/material/Grid'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import FormHelperText from '@mui/material/FormHelperText'
 
 import CepMask from './CepMask'
 
-import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label

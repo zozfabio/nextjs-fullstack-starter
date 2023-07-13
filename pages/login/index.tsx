@@ -35,15 +35,15 @@ const LoginPage: ILoginPage = ({ csrfToken }) => {
           <Grid container spacing={4}>
             <InputUsername
               name="username"
-              label={'Email'}
-              placeholder={'exemplo@email.com'}
+              label="Email"
+              placeholder="user@temp.com"
               autoFocus
               xs={12}
             />
             <InputPassword
               name="password"
-              label={'Senha'}
-              placeholder={'Digite sua senha'}
+              label="Senha"
+              placeholder="userpass"
               xs={12}
             />
             <Grid item container xs={12}>

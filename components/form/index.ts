@@ -1,18 +1,9 @@
 // eslint-disable-next-line no-restricted-imports
 export type { FieldValues } from 'react-hook-form'
-// eslint-disable-next-line no-restricted-imports
-export {
-  useForm,
-  useController,
-  useFormContext,
-  useWatch,
-  FormProvider
-} from 'react-hook-form'
-// eslint-disable-next-line no-restricted-imports
-export { zodResolver as vResolver } from '@hookform/resolvers/zod'
 
+export { default as Form, useForm } from './Form'
 export { default as FormStepper } from './FormStepper'
-export { default as Form } from './Form'
+export { default as InputController } from './InputController'
 
 export { default as InputCep } from './InputCep'
 export { default as InputCnpj } from './InputCnpj'

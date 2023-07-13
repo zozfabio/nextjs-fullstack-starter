@@ -11,7 +11,12 @@ import { useRouter } from 'next/router'
 import { Stack, Button, Toolbar } from '@mui/material'
 import { ChevronLeft, ChevronRight } from '@mui/icons-material'
 
-import { vResolver, useForm, FormProvider, FieldValues } from 'components/form'
+// eslint-disable-next-line no-restricted-imports
+import { useForm, FormProvider } from 'react-hook-form'
+// eslint-disable-next-line no-restricted-imports
+import { zodResolver as vResolver } from '@hookform/resolvers/zod'
+
+import { FieldValues } from 'components/form'
 import {
   useRoutesContext,
   useNavigationConfirmationContext

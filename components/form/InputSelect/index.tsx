@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 
+// eslint-disable-next-line no-restricted-imports
+import { useController, useFormContext } from 'react-hook-form'
+
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import FormHelperText from '@mui/material/FormHelperText'
@@ -7,7 +10,6 @@ import Grid from '@mui/material/Grid'
 import Tooltip from '@mui/material/Tooltip'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 
-import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label

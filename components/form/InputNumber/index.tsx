@@ -7,6 +7,9 @@ import {
   useMemo
 } from 'react'
 
+// eslint-disable-next-line no-restricted-imports
+import { useController, useFormContext } from 'react-hook-form'
+
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
@@ -14,7 +17,6 @@ import FormHelperText from '@mui/material/FormHelperText'
 
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
-import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label
@@ -149,7 +151,9 @@ const InputNumber: FunctionComponent<InputNumberProps> = ({
         aria-describedby={helpId}
         placeholder={placeholder}
         inputProps={{ maxLength }}
-        startAdornment={startAdornment}
+        InputProps={{
+          startAdornment
+        }}
         type="text"
         size="small"
       />

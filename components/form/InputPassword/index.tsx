@@ -69,19 +69,21 @@ const InputPassword: FunctionComponent<InputPasswordProps> = ({
         placeholder={placeholder}
         inputProps={{ maxLength: 50 }}
         autoComplete="off"
-        endAdornment={
-          <IconButton
-            aria-label="Toggle password visibility"
-            onClick={toggleVisible}
-            edge="end"
-            sx={{
-              backgroundColor: 'transparent',
-              color: '#000000'
-            }}
-          >
-            {!visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
-          </IconButton>
-        }
+        InputProps={{
+          endAdornment: (
+            <IconButton
+              aria-label="Toggle password visibility"
+              onClick={toggleVisible}
+              edge="end"
+              sx={{
+                backgroundColor: 'transparent',
+                color: '#000000'
+              }}
+            >
+              {!visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </IconButton>
+          )
+        }}
       />
       {error && <FormHelperText id={helpId}>{error}</FormHelperText>}
     </FormControl>

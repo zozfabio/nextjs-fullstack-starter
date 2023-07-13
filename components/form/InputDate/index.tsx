@@ -1,5 +1,8 @@
 import { FunctionComponent, useCallback, useMemo } from 'react'
 
+// eslint-disable-next-line no-restricted-imports
+import { useController, useFormContext } from 'react-hook-form'
+
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
@@ -22,7 +25,6 @@ import {
   ptBrLocale
 } from 'helpers/time'
 
-import { useController, useFormContext } from 'components/form'
 import {
   StyledFormControl as FormControl,
   StyledLabel as Label
